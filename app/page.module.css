@@ -1,5 +1,17 @@
-.hello {
-  font-size: 2rem;
-  margin-block: 16px;
-  margin-inline: 24px;
+.mainWrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.button {
+  padding-block: 8px;
+  padding-inline: 12px;
 }
