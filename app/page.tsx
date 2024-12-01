@@ -1,30 +1,35 @@
-import { signIn, signOut } from "@/auth";
+import { auth, signIn } from "@/auth";
 import Hello from "@/components/hello";
 
 import styles from "./page.module.css";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+  const isAuthenticated = typeof session?.user !== "undefined";
+
   return (
     <div className={styles.mainWrapper}>
-      <div className={styles.formWrapper}>
+      {!isAuthenticated ? (
         <form
           action={async () => {
-            "use server"
-            await signIn("keycloak")
+            "use server";
+            await signIn("keycloak");
           }}
         >
-          <button type="submit" className={styles.button}>Sign In with Keycloak</button>
+          <button type="submit" className={styles.button}>
+            Sign In
+          </button>
         </form>
-        <form
-          action={async () => {
-            "use server"
-            await signOut()
-          }}
-        >
-          <button type="submit" className={styles.button}>Sign Out</button>
-        </form>
-      </div>
-      <Hello />
+      ) : (
+        <>
+          <form action="/api/auth/logout" method="POST">
+            <button type="submit" className={styles.button}>
+              Sign Out
+            </button>
+          </form>
+          <Hello />
+        </>
+      )}
     </div>
   );
 }
