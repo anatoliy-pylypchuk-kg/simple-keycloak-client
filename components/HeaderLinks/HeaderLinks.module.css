@@ -1,0 +1,18 @@
+.links {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 32px;
+  font-size: 1.25rem;
+  padding: 0;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.active {
+  border-block-end: 2px solid black;
+}

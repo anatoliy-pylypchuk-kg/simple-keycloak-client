@@ -1,0 +1,12 @@
+.wrapper {
+  height: 100%;
+}
+
+.main {
+  padding-block-start: 32px;
+  padding-inline-start: 32px;
+}
+
+.title {
+  font-weight: 300;
+}

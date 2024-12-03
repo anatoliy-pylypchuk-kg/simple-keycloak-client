@@ -1,0 +1,8 @@
+.signOutButton {
+  border: none;
+  border-radius: 8px;
+  padding-block: 8px;
+  padding-inline: 12px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}

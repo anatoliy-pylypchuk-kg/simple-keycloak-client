@@ -2,7 +2,7 @@ import SignInButton from "@/components/SignInButton";
 
 import styles from "./Landing.module.css";
 
-export default async function Landing() {
+export default function Landing() {
   return (
     <div className={styles.wrapper}>
       <header>

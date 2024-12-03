@@ -2,7 +2,7 @@ import { signIn } from "@/auth";
 
 import styles from "./SignInButton.module.css";
 
-export default async function SignInButton() {
+export default function SignInButton() {
   return (
     <form
       action={async () => {
