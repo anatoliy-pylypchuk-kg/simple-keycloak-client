@@ -1,0 +1,62 @@
+.wrapper {
+  padding: 48px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  background-image: url("/images/background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: 300;
+  backdrop-filter: blur(16px);
+  padding-block: 16px;
+  padding-inline: 24px;
+  border-radius: 16px;
+}
+
+.main {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  padding-bottom: 32px;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  padding-block: 16px;
+  padding-inline: 32px;
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+}
+
+.heroText {
+  font-size: 1.5rem;
+  max-width: 35ch;
+  text-wrap: pretty;
+  text-align: end;
+}
+
+.signInWrapper {
+  padding-block: 16px;
+  padding-inline-start: 32px;
+  border-inline-start: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signInHint {
+  font-size: 1.25rem;
+}
+
+.signUpHint {
+  font-size: 1rem;
+}

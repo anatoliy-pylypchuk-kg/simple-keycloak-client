@@ -1,0 +1,10 @@
+.signInButton {
+  background-color: hsl(270, 73%, 53%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding-block: 12px;
+  padding-inline: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
