@@ -12,5 +12,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return token;
     },
+    async session({ session, token }) {
+      // @ts-expect-error Sessions should contain an access token, but TypeScript doesn't know that
+      session.accessToken = token.accessToken;
+      return session;
+    },
   },
 });
