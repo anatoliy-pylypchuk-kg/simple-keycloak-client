@@ -7,14 +7,21 @@ import { getAccounts } from "@/utils/accountClient";
 
 import styles from "./page.module.css";
 
-export default async function AccountsPage() {
+export type AccountsPageProps = {
+  searchParams: Promise<{ page?: number; size?: number }>;
+};
+
+export default async function AccountsPage({
+  searchParams,
+}: Readonly<AccountsPageProps>) {
   const session = await auth();
 
   if (!session?.user) {
     return redirect("/");
   }
 
-  const accounts = await getAccounts(0, 20);
+  const { page, size } = await searchParams;
+  const accounts = await getAccounts((page ?? 1) - 1, size ?? 10);
 
   return (
     <div className={styles.wrapper}>

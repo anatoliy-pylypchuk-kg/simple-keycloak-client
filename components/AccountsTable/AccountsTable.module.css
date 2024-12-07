@@ -25,4 +25,33 @@
 
 .headerCell {
   text-align: start;
+  position: sticky;
+  top: 0;
+}
+
+.paginationWrapper {
+  padding-block-start: 16px;
+  padding-block-end: 32px;
+  padding-inline: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.pageButton {
+  border: none;
+  border-radius: 4px;
+  padding-block: 8px;
+  padding-inline: 12px;
+  cursor: pointer;
+  background-color: hsl(240, 3%, 94%);
+  color: black;
+  text-decoration: none;
+}
+
+.activePageButton {
+  background-color: hsl(270, 73%, 53%);
+  color: white;
 }

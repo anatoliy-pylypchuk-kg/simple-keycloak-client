@@ -9,6 +9,7 @@ import {
 export type AccountModel = {
   id: number;
   name: string;
+  currency: string;
   balance: number;
 };
 
