@@ -1,0 +1,28 @@
+.table {
+  width: 100%;
+  padding-inline: 32px;
+  font-size: 1.25rem;
+  border-collapse: separate;
+  border-spacing: 0 16px;
+  --border-radius: 12px;
+}
+
+.cell {
+  background-color: hsl(240, 3%, 94%);
+  padding-block: 12px;
+  padding-inline: 16px;
+}
+
+.cell:first-child {
+  border-start-start-radius: var(--border-radius);
+  border-end-start-radius: var(--border-radius);
+}
+
+.cell:last-child {
+  border-start-end-radius: var(--border-radius);
+  border-end-end-radius: var(--border-radius);
+}
+
+.headerCell {
+  text-align: start;
+}

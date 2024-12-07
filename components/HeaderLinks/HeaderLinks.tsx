@@ -6,7 +6,15 @@ import clsx from "clsx";
 
 import styles from "./HeaderLinks.module.css";
 
-export default function HeaderLinks() {
+export type HeaderLinksProps = {
+  hasAccountsAccess: boolean;
+  hasCardsAccess: boolean;
+};
+
+export default function HeaderLinks({
+  hasAccountsAccess,
+  hasCardsAccess,
+}: Readonly<HeaderLinksProps>) {
   const pathname = usePathname();
 
   const home = "/";
@@ -23,22 +31,29 @@ export default function HeaderLinks() {
           Home
         </Link>
       </li>
-      <li>
-        <Link
-          href={accounts}
-          className={clsx(styles.link, pathname === accounts && styles.active)}
-        >
-          Accounts
-        </Link>
-      </li>
-      <li>
-        <Link
-          href={cards}
-          className={clsx(styles.link, pathname === cards && styles.active)}
-        >
-          Cards
-        </Link>
-      </li>
+      {hasAccountsAccess && (
+        <li>
+          <Link
+            href={accounts}
+            className={clsx(
+              styles.link,
+              pathname === accounts && styles.active,
+            )}
+          >
+            Accounts
+          </Link>
+        </li>
+      )}
+      {hasCardsAccess && (
+        <li>
+          <Link
+            href={cards}
+            className={clsx(styles.link, pathname === cards && styles.active)}
+          >
+            Cards
+          </Link>
+        </li>
+      )}
     </ul>
   );
 }
