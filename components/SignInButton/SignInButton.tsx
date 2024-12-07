@@ -11,7 +11,7 @@ export default function SignInButton() {
       }}
     >
       <button type="submit" className={styles.signInButton}>
-        Sign In
+        Sign In | Sign Up
       </button>
     </form>
   );

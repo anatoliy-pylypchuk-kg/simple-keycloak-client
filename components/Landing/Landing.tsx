@@ -18,11 +18,11 @@ export default function Landing() {
           </p>
           <div className={styles.signInWrapper}>
             <p className={styles.signInHint}>
-              Already a user? Click the Sign In button!
+              Already a user? Click the button below!
             </p>
             <SignInButton />
             <p className={styles.signUpHint}>
-              New user? Confusingly, still click the Sign In button!
+              New user? Yeah, you&#39;re not getting a separate button
             </p>
           </div>
         </div>
