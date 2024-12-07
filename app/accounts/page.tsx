@@ -5,11 +5,15 @@ import AccountsTable from "@/components/AccountsTable";
 import Header from "@/components/Header";
 import { getAccounts } from "@/utils/accountClient";
 
+import { closeAccountAction } from "./actions";
 import styles from "./page.module.css";
+import { RedirectType } from "next/dist/client/components/redirect";
 
 export type AccountsPageProps = {
   searchParams: Promise<{ page?: number; size?: number }>;
 };
+
+const defaultSize = 10;
 
 export default async function AccountsPage({
   searchParams,
@@ -21,7 +25,25 @@ export default async function AccountsPage({
   }
 
   const { page, size } = await searchParams;
-  const accounts = await getAccounts((page ?? 1) - 1, size ?? 10);
+  const actualPage = (page ?? 1) - 1;
+  const actualSize = size ?? defaultSize;
+
+  if (
+    actualPage < 0 ||
+    actualSize < 1 ||
+    (actualPage === 0 && size === defaultSize)
+  ) {
+    return redirect("/accounts", RedirectType.replace);
+  }
+
+  const accounts = await getAccounts(actualPage, actualSize);
+
+  if (accounts.content.length === 0 && actualPage > 0) {
+    return redirect(
+      `/accounts?page=${accounts.page.totalPages}`,
+      RedirectType.replace,
+    );
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -30,7 +52,10 @@ export default async function AccountsPage({
         <h1 className={styles.title}>Accounts</h1>
       </header>
       <main className={styles.main}>
-        <AccountsTable accounts={accounts} />
+        <AccountsTable
+          accounts={accounts}
+          closeAccountAction={closeAccountAction}
+        />
       </main>
     </div>
   );

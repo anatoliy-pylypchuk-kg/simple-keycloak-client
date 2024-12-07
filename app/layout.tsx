@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 import "./reset.css";
 import "./globals.css";
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <Tooltip.Provider>{children}</Tooltip.Provider>
+        </SessionProvider>
       </body>
     </html>
   );

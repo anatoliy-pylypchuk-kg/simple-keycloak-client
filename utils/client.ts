@@ -37,7 +37,6 @@ export async function fetchFromResourceServer<T>(
     headers: { Authorization: `Bearer ${accessToken}` },
     body: JSON.stringify(body),
   }).then((response) => {
-    console.log(response);
-    return response.json();
+    return response.status === 200 ? response.json() : null;
   });
 }

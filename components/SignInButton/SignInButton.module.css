@@ -1,5 +1,5 @@
 .signInButton {
-  background-color: hsl(270, 73%, 53%);
+  background-color: var(--color-primary);
   color: white;
   border: none;
   border-radius: 8px;

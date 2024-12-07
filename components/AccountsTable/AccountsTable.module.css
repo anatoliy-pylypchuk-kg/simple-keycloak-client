@@ -8,7 +8,7 @@
 }
 
 .cell {
-  background-color: hsl(240, 3%, 94%);
+  background-color: var(--color-secondary);
   padding-block: 12px;
   padding-inline: 16px;
 }
@@ -29,7 +29,29 @@
   top: 0;
 }
 
-.paginationWrapper {
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.actionButton {
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.editButton {
+  background-color: var(--color-primary);
+}
+
+.closeButton {
+  background-color: var(--color-danger);
+}
+
+.pagination {
   padding-block-start: 16px;
   padding-block-end: 32px;
   padding-inline: 32px;
@@ -41,17 +63,16 @@
 }
 
 .pageButton {
-  border: none;
   border-radius: 4px;
   padding-block: 8px;
   padding-inline: 12px;
   cursor: pointer;
-  background-color: hsl(240, 3%, 94%);
+  background-color: var(--color-secondary);
   color: black;
   text-decoration: none;
 }
 
 .activePageButton {
-  background-color: hsl(270, 73%, 53%);
+  background-color: var(--color-primary);
   color: white;
 }
