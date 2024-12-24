@@ -98,7 +98,7 @@ export default function AccountsTable({
 
                   <SimpleAlertDialog
                     tooltipText="Close account"
-                    title="Close account"
+                    title="Close Account"
                     description={`Are you sure you want to close ${account.name}?`}
                     actionButtonText="Close account"
                     cancelButtonText="Cancel"

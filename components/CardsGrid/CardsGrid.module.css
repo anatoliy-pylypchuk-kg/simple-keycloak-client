@@ -1,0 +1,70 @@
+.grid {
+  width: 100%;
+  padding-inline: 32px;
+  font-size: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+  place-content: center;
+  gap: 36px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card {
+  max-width: 500px;
+  padding-block: 24px;
+  padding-inline: 24px;
+  border-radius: 16px;
+  box-shadow:
+      hsl(206 22% 7% / 35%) 0 10px 38px -10px,
+      hsl(206 22% 7% / 20%) 0 10px 20px -15px;
+  aspect-ratio: 1.618 / 1;
+  background-image: url("/images/card1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 8px;
+}
+
+.expiryDate {
+  font-size: 1.25rem;
+}
+
+.nameAndActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.closeCardButton {
+  border: none;
+  border-radius: 1000px;
+  padding: 12px;
+  background-color: hsla(0deg 100% 100% / 0.6);
+  cursor: pointer;
+}
+
+.card[data-design="1"] {
+  background-image: url("/images/card1.svg");
+}
+
+.card[data-design="2"] {
+  background-image: url("/images/card2.svg");
+}
+
+.card[data-design="3"] {
+  background-image: url("/images/card3.svg");
+}
+
+.card[data-design="4"] {
+  background-image: url("/images/card4.svg");
+}

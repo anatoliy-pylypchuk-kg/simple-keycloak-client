@@ -19,7 +19,7 @@ export async function getCards(page: number, size: number) {
 }
 
 export async function openCard(request: OpenCardRequest) {
-  return await fetchFromResourceServer<CardModel>("/accounts", POST, request);
+  return await fetchFromResourceServer<CardModel>("/cards", POST, request);
 }
 
 export async function closeCard(id: number) {
