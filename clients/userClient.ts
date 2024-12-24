@@ -1,4 +1,4 @@
-import { fetchFromResourceServer } from "@/utils/client";
+import { fetchFromResourceServer } from "@/clients/client";
 
 export type UserInfoModel = {
   username: string;

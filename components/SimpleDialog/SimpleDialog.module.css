@@ -1,11 +1,11 @@
-.alertDialogOverlay {
+.dialogOverlay {
   background-color: hsla(0deg 0% 0% / 0.7);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.alertDialogContent {
+.dialogContent {
   background-color: white;
   border-radius: 6px;
   box-shadow:
@@ -22,43 +22,32 @@
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.alertDialogContent:focus {
+.dialogContent:focus {
   outline: none;
 }
 
-.alertDialogTitle {
+.dialogTitle {
   margin: 0;
   margin-block-end: 16px;
   font-size: 1.25rem;
 }
 
-.alertDialogDescription {
+.dialogDescription {
   margin-bottom: 24px;
   line-height: 1.5;
 }
 
-.alertDialogActions {
-  display: flex;
-  gap: 16px;
-  justify-content: flex-end;
-}
-
-.alertDialogCancelButton {
+.closeIconButton {
   border: none;
-  border-radius: 4px;
-  padding-block: 8px;
-  padding-inline: 12px;
+  border-radius: 100%;
+  padding: 4px;
+  background-color: transparent;
+  height: 32px;
+  width: 32px;
+  display: inline-grid;
+  place-content: center;
+  position: absolute;
+  top: 12px;
+  right: 12px;
   cursor: pointer;
-  background-color: var(--color-secondary);
-  color: black;
-}
-
-.alertDialogActionButton {
-  border: none;
-  border-radius: 4px;
-  padding-block: 8px;
-  padding-inline: 12px;
-  cursor: pointer;
-  background-color: var(--color-primary);
-  color: white;
 }

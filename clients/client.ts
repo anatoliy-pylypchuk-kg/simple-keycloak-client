@@ -34,7 +34,10 @@ export async function fetchFromResourceServer<T>(
   const accessToken = await getAccessToken();
   return await fetch(`${resourceServerBaseUrl}${path}`, {
     method,
-    headers: { Authorization: `Bearer ${accessToken}` },
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(body),
   }).then((response) => {
     return response.status === 200 ? response.json() : null;

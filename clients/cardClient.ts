@@ -1,4 +1,4 @@
-import { DELETE, fetchFromResourceServer, Page, POST } from "@/utils/client";
+import { DELETE, fetchFromResourceServer, Page, POST } from "@/clients/client";
 
 export type CardModel = {
   id: number;

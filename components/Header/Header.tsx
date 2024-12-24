@@ -1,13 +1,14 @@
 import { auth } from "@/auth";
 import SignOutButton from "@/components/SignOutButton";
 
-import styles from "./Header.module.css";
-import HeaderLinks from "@/components/HeaderLinks";
 import {
   getUserAccess,
   UserAccessModel,
   UserAccessResource,
-} from "@/utils/userClient";
+} from "@/clients/userClient";
+import HeaderLinks from "@/components/HeaderLinks";
+
+import styles from "./Header.module.css";
 
 function hasAccess(userAccess: UserAccessModel, resource: UserAccessResource) {
   return !!userAccess?.allowedResources?.find((r) => r === resource);

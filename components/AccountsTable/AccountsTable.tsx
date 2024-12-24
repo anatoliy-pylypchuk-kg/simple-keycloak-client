@@ -1,25 +1,46 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 
-import SimpleTooltip from "@/components/SimpleTooltip";
+import { Page } from "@/clients/client";
+import { AccountModel, UpdateAccountRequest } from "@/clients/accountClient";
+import EditAccountForm from "@/components/EditAccountForm";
 import SimpleAlertDialog from "@/components/SimpleAlertDialog";
-import { Page } from "@/utils/client";
-import { AccountModel } from "@/utils/accountClient";
+import SimpleDialog from "@/components/SimpleDialog";
 
 import styles from "./AccountsTable.module.css";
 
 export type AccountsTableProps = {
   accounts: Page<AccountModel>;
+  updateAccountAction: (
+    id: number,
+    request: UpdateAccountRequest,
+  ) => Promise<void>;
   closeAccountAction: (id: number) => Promise<void>;
 };
 
 export default function AccountsTable({
   accounts,
+  updateAccountAction,
   closeAccountAction,
 }: Readonly<AccountsTableProps>) {
+  const [dialogsOpen, setDialogsOpen] = useState(
+    new Map(accounts.content.map((a) => [a.id, false])),
+  );
+
+  function setDialogOpen(accountId: number, value: boolean) {
+    setDialogsOpen(
+      new Map(
+        dialogsOpen
+          .entries()
+          .map(([id, v]) => [id, id === accountId ? value : v]),
+      ),
+    );
+  }
+
   return (
     <>
       <table cellSpacing={0} cellPadding={0} className={styles.table}>
@@ -52,14 +73,28 @@ export default function AccountsTable({
               </td>
               <td className={styles.cell}>
                 <div className={styles.actions}>
-                  <SimpleTooltip tooltipText="Edit account">
+                  <SimpleDialog
+                    tooltipText="Edit account"
+                    title={`Edit ${account.name}`}
+                    open={dialogsOpen.get(account.id) ?? false}
+                    setOpen={(open) => setDialogOpen(account.id, open)}
+                    content={
+                      <EditAccountForm
+                        initialName={account.name}
+                        onSubmitAction={async (request) =>
+                          updateAccountAction(account.id, request)
+                        }
+                        onClose={() => setDialogOpen(account.id, false)}
+                      />
+                    }
+                  >
                     <button
                       className={clsx(styles.actionButton, styles.editButton)}
                       aria-label="Edit account"
                     >
                       <Pencil1Icon />
                     </button>
-                  </SimpleTooltip>
+                  </SimpleDialog>
 
                   <SimpleAlertDialog
                     tooltipText="Close account"

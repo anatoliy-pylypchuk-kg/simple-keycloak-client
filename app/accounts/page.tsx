@@ -1,13 +1,12 @@
-import { redirect } from "next/navigation";
+import { redirect, RedirectType } from "next/navigation";
 
 import { auth } from "@/auth";
 import AccountsTable from "@/components/AccountsTable";
 import Header from "@/components/Header";
-import { getAccounts } from "@/utils/accountClient";
+import { getAccounts } from "@/clients/accountClient";
 
-import { closeAccountAction } from "./actions";
+import { closeAccountAction, updateAccountAction } from "./actions";
 import styles from "./page.module.css";
-import { RedirectType } from "next/dist/client/components/redirect";
 
 export type AccountsPageProps = {
   searchParams: Promise<{ page?: number; size?: number }>;
@@ -54,6 +53,7 @@ export default async function AccountsPage({
       <main className={styles.main}>
         <AccountsTable
           accounts={accounts}
+          updateAccountAction={updateAccountAction}
           closeAccountAction={closeAccountAction}
         />
       </main>

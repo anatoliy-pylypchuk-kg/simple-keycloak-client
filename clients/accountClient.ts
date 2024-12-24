@@ -4,7 +4,7 @@ import {
   Page,
   PATCH,
   POST,
-} from "@/utils/client";
+} from "@/clients/client";
 
 export type AccountModel = {
   id: number;
@@ -15,6 +15,7 @@ export type AccountModel = {
 
 export type OpenAccountRequest = {
   name: string;
+  currency: string;
 };
 
 export type UpdateAccountRequest = {

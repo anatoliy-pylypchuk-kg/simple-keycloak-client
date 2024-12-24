@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
+import { getUserInfo } from "@/clients/userClient";
 import Header from "@/components/Header";
-import { getUserInfo } from "@/utils/userClient";
 
 import styles from "./Home.module.css";
 
