@@ -5,7 +5,7 @@
   gap: 16px;
 }
 
-.name {
+.formData {
   display: flex;
   flex-direction: column;
 }

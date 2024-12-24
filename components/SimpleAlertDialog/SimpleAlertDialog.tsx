@@ -7,7 +7,7 @@ import styles from "./SimpleAlertDialog.module.css";
 
 export type SimpleAlertDialogProps = {
   children: ReactNode;
-  tooltipText: string;
+  tooltipText?: string;
   title: string;
   description: string;
   actionButtonText: string;
@@ -26,9 +26,13 @@ export default function SimpleAlertDialog({
 }: Readonly<SimpleAlertDialogProps>) {
   return (
     <AlertDialog.Root>
-      <SimpleTooltip tooltipText={tooltipText}>
+      {tooltipText ? (
+        <SimpleTooltip tooltipText={tooltipText}>
+          <AlertDialog.Trigger asChild>{children}</AlertDialog.Trigger>
+        </SimpleTooltip>
+      ) : (
         <AlertDialog.Trigger asChild>{children}</AlertDialog.Trigger>
-      </SimpleTooltip>
+      )}
 
       <AlertDialog.Portal>
         <AlertDialog.Overlay className={styles.alertDialogOverlay} />

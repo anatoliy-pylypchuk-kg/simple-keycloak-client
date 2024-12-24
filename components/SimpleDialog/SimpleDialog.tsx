@@ -8,7 +8,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 
 export type SimpleAlertDialogProps = {
   children: ReactNode;
-  tooltipText: string;
+  tooltipText?: string;
   title: string;
   description?: string;
   content: ReactNode;
@@ -27,9 +27,13 @@ export default function SimpleDialog({
 }: Readonly<SimpleAlertDialogProps>) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <SimpleTooltip tooltipText={tooltipText}>
+      {tooltipText ? (
+        <SimpleTooltip tooltipText={tooltipText}>
+          <Dialog.Trigger asChild>{children}</Dialog.Trigger>
+        </SimpleTooltip>
+      ) : (
         <Dialog.Trigger asChild>{children}</Dialog.Trigger>
-      </SimpleTooltip>
+      )}
 
       <Dialog.Portal>
         <Dialog.Overlay className={styles.dialogOverlay} />

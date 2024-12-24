@@ -1,11 +1,17 @@
 import { redirect, RedirectType } from "next/navigation";
 
 import { auth } from "@/auth";
+import { getAccounts } from "@/clients/accountClient";
 import AccountsTable from "@/components/AccountsTable";
 import Header from "@/components/Header";
-import { getAccounts } from "@/clients/accountClient";
+import OpenAccountButton from "@/components/OpenAccountButton";
 
-import { closeAccountAction, updateAccountAction } from "./actions";
+import {
+  closeAccountAction,
+  openAccountAction,
+  updateAccountAction,
+} from "./actions";
+
 import styles from "./page.module.css";
 
 export type AccountsPageProps = {
@@ -49,7 +55,9 @@ export default async function AccountsPage({
       <Header />
       <header className={styles.header}>
         <h1 className={styles.title}>Accounts</h1>
+        <OpenAccountButton onSubmitAction={openAccountAction} />
       </header>
+
       <main className={styles.main}>
         <AccountsTable
           accounts={accounts}

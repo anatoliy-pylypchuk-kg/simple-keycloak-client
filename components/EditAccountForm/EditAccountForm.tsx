@@ -21,9 +21,14 @@ export default function EditAccountForm({
       }}
       className={styles.form}
     >
-      <div className={styles.name}>
+      <div className={styles.formData}>
         <label htmlFor="name">Name</label>
-        <input id="name" name="name" defaultValue={initialName} />
+        <input
+          id="name"
+          name="name"
+          defaultValue={initialName}
+          required={true}
+        />
       </div>
 
       <div className={styles.actions}>
