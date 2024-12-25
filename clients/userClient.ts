@@ -20,3 +20,10 @@ export async function getUserInfo() {
 export async function getUserAccess() {
   return await fetchFromResourceServer<UserAccessModel>("/users/access");
 }
+
+export function hasAccess(
+  userAccess: UserAccessModel,
+  resource: UserAccessResource,
+) {
+  return !!userAccess?.allowedResources?.find((r) => r === resource);
+}

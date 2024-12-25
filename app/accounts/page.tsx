@@ -2,6 +2,7 @@ import { redirect, RedirectType } from "next/navigation";
 
 import { auth } from "@/auth";
 import { getAccounts } from "@/clients/accountClient";
+import { getUserAccess, hasAccess } from "@/clients/userClient";
 import AccountsTable from "@/components/AccountsTable";
 import Header from "@/components/Header";
 import OpenAccountButton from "@/components/OpenAccountButton";
@@ -26,6 +27,11 @@ export default async function AccountsPage({
   const session = await auth();
 
   if (!session?.user) {
+    return redirect("/");
+  }
+
+  const userAccess = await getUserAccess();
+  if (!hasAccess(userAccess, "ACCOUNTS")) {
     return redirect("/");
   }
 

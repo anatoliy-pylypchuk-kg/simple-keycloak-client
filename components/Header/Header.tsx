@@ -1,18 +1,10 @@
 import { auth } from "@/auth";
 import SignOutButton from "@/components/SignOutButton";
 
-import {
-  getUserAccess,
-  UserAccessModel,
-  UserAccessResource,
-} from "@/clients/userClient";
+import { getUserAccess, hasAccess } from "@/clients/userClient";
 import HeaderLinks from "@/components/HeaderLinks";
 
 import styles from "./Header.module.css";
-
-function hasAccess(userAccess: UserAccessModel, resource: UserAccessResource) {
-  return !!userAccess?.allowedResources?.find((r) => r === resource);
-}
 
 export default async function Header() {
   const session = await auth();

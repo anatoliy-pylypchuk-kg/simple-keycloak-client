@@ -16,7 +16,6 @@ export const resourceServerBaseUrl = process.env.RESOURCE_SERVER_BASE_URL;
 
 export const GET = "GET";
 export const POST = "POST";
-export const PUT = "PUT";
 export const PATCH = "PATCH";
 export const DELETE = "DELETE";
 

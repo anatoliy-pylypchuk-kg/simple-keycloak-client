@@ -2,6 +2,7 @@ import { redirect, RedirectType } from "next/navigation";
 
 import { auth } from "@/auth";
 import { getCards } from "@/clients/cardClient";
+import { getUserAccess, hasAccess } from "@/clients/userClient";
 import CardsGrid from "@/components/CardsGrid";
 import Header from "@/components/Header";
 import OpenCardButton from "@/components/OpenCardButton";
@@ -22,6 +23,11 @@ export default async function CardsPage({
   const session = await auth();
 
   if (!session?.user) {
+    return redirect("/");
+  }
+
+  const userAccess = await getUserAccess();
+  if (!hasAccess(userAccess, "CARDS")) {
     return redirect("/");
   }
 
